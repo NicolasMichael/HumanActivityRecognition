@@ -80,7 +80,7 @@ run_analysis <- function(){
                 ## Subject for each Activity for each Variable
                 ## Note: calculate the mean of all columns except those added
                 ## during the process: Method Flag, Subject and Activity Description
-                cleanSumData <- aggregate(cleanSet[, 4: ncol(cleanSet)], by=list(Subject=cleanSet$Subject, Activity=cleanSet$ActivityDesc), FUN=mean)
+                cleanSumData <- aggregate(cleanSet[, 4: ncol(cleanSet)], by=list(Method=cleanSet$Method, Subject=cleanSet$Subject, Activity=cleanSet$ActivityDesc), FUN=mean)
                 
                 ## Order clean summarised data set by Subject then by Activity
                 cleanSumData <- cleanSumData[order(cleanSumData$Subject, cleanSumData$Activity), ]
