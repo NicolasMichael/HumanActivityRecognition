@@ -20,13 +20,13 @@ The script will run provided that the zip file named “UCI HAR Dataset.zip” i
 The first section of the script is concerned with dimensioning the variables that will be used in accessing the data files in the zip file.
 
 The following data files will be used for both the training and test data:
-*Activity Labels that describe each activity performed on the subjects.
-*Features that describe all measurements performed.
+* Activity Labels that describe each activity performed on the subjects.
+* Features that describe all measurements performed.
 
 Then for both training and test data the script will access the files that contain:
-*The subjects “subject_train/test.txt”
-*What activities “y_train/test.txt”
-*The measurements of each subject in each activity “X_train.test.txt”.
+* The subjects “subject_train/test.txt”
+* What activities “y_train/test.txt”
+* The measurements of each subject in each activity “X_train.test.txt”.
 
 The next section of the script will check to see if the zip file already exists in the user’s working directory.  If not the function will stop and the user will be prompted to either download the zip file from the url that is provided in the message or to use the function “download_analysis_data.R” to download the zip file automatically in the working directory.
 
@@ -51,18 +51,18 @@ Next the script will merge the general activities list with the activities list 
 As per the requirements of the analysis not all variables are required for the final summarised data set.  Only the variables that are related to the mean and standard deviation are required.  Therefore we need to subset the observations data set loaded before to hold only those variables that are mean and standard deviation related.  To subset the script the grep function is used to search for the patterns “mean()” and “std()” in the data frame column names.
 
 Now the three main data frames along with the flag character vector are ready to be merged into one subset (one for the training and one for the test activities):
-*Flag character vector (Train or Test) in column one (1).
-*Subjects in column two (2).
-*Activities performed in column three (3).
-*The observations related to mean and standard deviation in the rest of the columns.
+* Flag character vector (Train or Test) in column one (1).
+* Subjects in column two (2).
+* Activities performed in column three (3).
+* The observations related to mean and standard deviation in the rest of the columns.
 
 To merge all data frames and the character vector the function “cbind” is used.
 
 When both the training and test data sets are cleaned as described above one data set named “cleanSet” will be created using the “rbind” function.
 
 Then further process is carried to summarise the “cleanSet” as per the requirements of the analysis, i.e. calculating the average of each variable for each activity and for each subject.  This is achieved using the “aggregate” function.  The “aggregate” function will calculate the average and prepare the final summarised clean data set as follows:
-*An average is not required for all columns because in the main observations set three non-numeric columns were added: flag, subject and activity description.  So the average will be calculated for columns starting from column four (4) until the end of the data set.  The end is determined using the “ncol()” function.
-*The average will be calculated for the groups defined in the “list()” function, flag, subject and activity.
+* An average is not required for all columns because in the main observations set three non-numeric columns were added: flag, subject and activity description.  So the average will be calculated for columns starting from column four (4) until the end of the data set.  The end is determined using the “ncol()” function.
+* The average will be calculated for the groups defined in the “list()” function, flag, subject and activity.
 
 For presentation purposes the summarised final set is then ordered by subject and then by activity,
 
