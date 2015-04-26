@@ -1,3 +1,3 @@
-# HumanActivityRecognition
-Data Transformation of Human Activity Recognition Using Smartphones
-Test
+# Human Activity Recognition
+# Getting and Cleaning Data Assignment
+
