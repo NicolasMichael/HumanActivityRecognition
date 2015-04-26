@@ -1,3 +1,4 @@
-# Human Activity Recognition
 # Getting and Cleaning Data Assignment
+# Human Activity Recognition
+
 
